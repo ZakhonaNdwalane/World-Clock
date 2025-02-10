@@ -1,0 +1,4 @@
+[[Redirects]]
+from = "/*"
+to = "/world.html"
+status = 200

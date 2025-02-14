@@ -1,18 +1,18 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #302222;
+    background-color: #c2b4b4;
     font-family: 'Open Sans', sans-serif;
 }
 
 h1{
     text-align: center; 
-    color: #fff;
+    color: #030303;
     font-size: 50px;    
 }
 
 footer{ 
     text-align: center; 
-    color: #fff;
+    color: #131212;
     font-size: 20px;    
 }

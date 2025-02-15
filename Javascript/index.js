@@ -13,11 +13,11 @@ function updateTime() {
   }
 
   // Cape Town
-  let capeTownElement = document.querySelector("#cape-town"); 
+  let capeTownElement = document.querySelector("#cape-town");
   if (capeTownElement) {
     let capeTownDateElement = capeTownElement.querySelector(".date");
     let capeTownTimeElement = capeTownElement.querySelector(".time");
-    let capeTownTime = moment().tz("Africa/Johannesburg"); 
+    let capeTownTime = moment().tz("Africa/Johannesburg");
 
     capeTownDateElement.innerHTML = capeTownTime.format("MMMM Do YYYY");
     capeTownTimeElement.innerHTML = capeTownTime.format(
@@ -47,10 +47,8 @@ function updateCity(event) {
   `;
 }
 
-
 updateTime();
 setInterval(updateTime, 1000);
-
 
 let citiesSelectElement = document.querySelector("#city");
 if (citiesSelectElement) {

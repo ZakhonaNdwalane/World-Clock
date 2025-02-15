@@ -13,14 +13,14 @@ function updateTime() {
   }
 
   // Cape Town
-  let capeTownElement = document.querySelector("#cape-town");
-  if (capeTownElement) {
-    let capeTownDateElement = capeTownElement.querySelector(".date");
-    let capeTownTimeElement = capeTownElement.querySelector(".time");
-    let capeTownTime = moment().tz("Africa/Johannesburg");
+  let capetownElement = document.querySelector("#cape-town");
+  if (capetownElement) {
+    let capetownDateElement = capetownElement.querySelector(".date");
+    let capetownTimeElement = capetownElement.querySelector(".time");
+    let capetownTime = moment().tz("Africa/Johannesburg");
 
-    capeTownDateElement.innerHTML = capeTownTime.format("MMMM Do YYYY");
-    capeTownTimeElement.innerHTML = capeTownTime.format(
+    capetownDateElement.innerHTML = capetownTime.format("MMMM Do YYYY");
+    capetownTimeElement.innerHTML = capetownTime.format(
       "h:mm:ss [<small>]A[</small>]"
     );
   }
@@ -28,29 +28,37 @@ function updateTime() {
 
 function updateCity(event) {
   let cityTimeZone = event.target.value;
-  if (cityTimeZone === "current") {
+
+  if (cityTimeZone === "Current") {
     cityTimeZone = moment.tz.guess();
   }
-  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+
+  let cityName = cityTimeZone.split("/").pop().replace("_", " ");
+
+  if (!cityName) {
+    cityName = cityTimeZone;
+  }
+
   let cityTime = moment().tz(cityTimeZone);
-  let citiesElement = document.querySelector("#cities");
-  citiesElement.innerHTML = `
-  <div class="city">
-    <div>
-      <h2>${cityName}</h2>
-      <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
-    </div>
-    <div class="time">${cityTime.format("h:mm:ss")} <small>${cityTime.format(
+
+  let cityHTML = `
+    <div class="city">
+      <div>
+        <h2>${cityName}</h2>
+        <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+      </div>
+      <div class="time">${cityTime.format("h:mm:ss")} <small>${cityTime.format(
     "A"
   )}</small></div>
-  </div>
+    </div>
   `;
+
+  document.querySelector("#cities").innerHTML = cityHTML;
 }
 
 updateTime();
+
 setInterval(updateTime, 1000);
 
 let citiesSelectElement = document.querySelector("#city");
-if (citiesSelectElement) {
-  citiesSelectElement.addEventListener("change", updateCity);
-}
+citiesSelectElement.addEventListener("change", updateCity);

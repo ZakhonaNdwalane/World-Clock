@@ -24,6 +24,18 @@ function updateTime() {
       "h:mm:ss [<small>]A[</small>]"
     );
   }
+
+  let moscowElement = document.querySelector("#moscow");
+  if (moscowElement) {
+    let moscowDateElement = moscowElement.querySelector(".date");
+    let moscowTimeElement = moscowElement.querySelector(".time");
+    let moscowTime = moment().tz("Europe/Moscow");
+
+    moscowDateElement.innerHTML = moscowTime.format("MMMM Do YYYY");
+    moscowTimeElement.innerHTML = moscowTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
 }
 
 function updateCity(event) {
